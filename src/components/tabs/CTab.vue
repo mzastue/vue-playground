@@ -4,7 +4,7 @@
         <h4>It's callback way to change value.</h4>
         {{ content }}
         <div>
-            <input type="name" value="content" @input="callback($event.target.value)">
+            <input type="name" :value="content" @input="callback($event.target.value)">
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {
     props: {
         content: { type: String },
         callback: { type: Function },
-    }   
+    }  
 }
 </script>
 

@@ -2,15 +2,14 @@
   <div class="tabs-container">
     <div>
       <p>This is tabsContainer.vue component!</p>
-      <p>{{ content }}</p>
-      <p>{{ modelForD.content }}</p>
+      <p>{{ model.content }}</p>
       <button type="button" @click="restore">Restore</button>
     </div>
 
-    <ATab :content="content" @input="onATabInput" />
-    <BTab v-model="content" />
-    <CTab :content="content" :callback="changeContent" />
-    <DTab :model="modelForD" />
+    <ATab :content="model.content" @input="onATabInput" />
+    <BTab v-model="model.content" />
+    <CTab :content="model.content" :callback="changeContent" />
+    <DTab :model="model" />
   </div>
 </template>
 
@@ -29,25 +28,23 @@ export default {
 
   data () {
     return {
-      content: defaultContent,
-      modelForD: {
+      model: {
         content: defaultContent,
-      }
+      },
     }
   },
 
   methods: {
     onATabInput (value) {
-      this.content = value;
+      this.model.content = value;
     },
 
     restore () {
-      this.content = defaultContent;
-      this.modelForD.content = defaultContent;
+      this.model.content = defaultContent;
     },
 
     changeContent (newContent) {
-      this.content = newContent;
+      this.model.content = newContent;
     }
   }
 };
